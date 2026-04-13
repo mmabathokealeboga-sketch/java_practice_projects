@@ -11,7 +11,25 @@ public class MovieRatingAnalyzer {
         // movieTitles.add("Inception");
         // ratings.add(8.8);
 
+        movieTitles.add("Sinners");                             ratings.add(8.9);
+        movieTitles.add("Fall From Grace");                     ratings.add(7.9);
+        movieTitles.add("Trash");                               ratings.add(5.9);
+        movieTitles.add("Spider Man");                          ratings.add(5.5);
+        movieTitles.add("Red");                                 ratings.add(6.9);
+        movieTitles.add("Iron Man");                            ratings.add(5.0);
+        movieTitles.add("Turtles All The Way Down");            ratings.add(7.7);
+        movieTitles.add("The Nun");                             ratings.add(8.9);
+
+
         System.out.println("=== MOVIE RATING ANALYZER ===\n");
+
+        printAllMovies(movieTitles, ratings);
+
+        double avg = calculateAverageRating(ratings);
+        System.out.println("Averge Rating " + avg);
+
+        int countHighlyRated = countHighlyRated(ratings);
+        System.out.println("Number of hihly rated movies " + countHighlyRated);
 
         // TODO 2: Call the methods in this order:
         // 1. printAllMovies
@@ -27,8 +45,11 @@ public class MovieRatingAnalyzer {
      * Format: "1. Inception - 8.8"
      */
     public static void printAllMovies(ArrayList<String> titles, ArrayList<Double> ratings) {
+        for (int i = 0; i < titles.size();i ++){
+            System.out.println((i+1) + ". " + titles.get(i) + " - " + ratings.get(i));
+        }
         // Your code here
-    }
+    } 
 
     /**
      * TODO 4: Implement this method
@@ -36,8 +57,14 @@ public class MovieRatingAnalyzer {
      * Use a for loop with range to sum the ratings, then divide by size.
      */
     public static double calculateAverageRating(ArrayList<Double> ratings) {
+        double sum = 0.0;
+
+        for (int i = 0; i < ratings.size();i++){
+            sum += ratings.get(i);
+
+        }
         // Your code here - return the average
-        return 0.0;
+        return sum/ratings.size();
     }
 
     /**
@@ -46,8 +73,15 @@ public class MovieRatingAnalyzer {
      * Use for loop with range + if statement
      */
     public static int countHighlyRated(ArrayList<Double> ratings) {
+        int count = 0;
+
+        for (int i = 0; i < ratings.size(); i++){
+            if (ratings.get(i) >= 8.0){
+                count++;
+            }
+        }
         // Your code here - return the count
-        return 0;
+        return count;
     }
 
     /**
